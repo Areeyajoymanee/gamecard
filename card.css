@@ -1,0 +1,285 @@
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Align to the top */
+  height: 100vh;
+  text-align: left;
+  padding: 2px;
+}
+
+.game-container h1, .game-container p {
+  align-self: flex-start; /* Align to the left */
+  margin-top: 0; /* Reset margin */
+  margin-bottom: 1px; /* Optional: space between elements */
+  padding-top: 1px; /* Optional: add space from the top */
+}
+.card-grid {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+}
+
+.grid-4x4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.grid-6x6 {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.grid-8x8 {
+  grid-template-columns: repeat(8, 1fr);
+}
+
+
+/* Card styling */
+.card {
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  perspective: 500px; /* Enables 3D effect for the card flip */
+  background-color: black;
+}
+
+/* Card container (inner part) for flip effect */
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s; /* Smooth transition for flip */
+}
+
+/* Flip the card */
+.card.flipped .card-inner {
+  transform: rotateY(180deg); /* Flip the card 180 degrees */
+}
+
+/* Front and back of the card */
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Prevents the back from showing when flipped */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Back of the card - Black background */
+.card-back {
+  background-color: black; /* Set the back of the card to black */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateY(180deg); /* Ensure the back is rotated correctly */
+}
+
+/* Images on the front and back of the card */
+.card-front img, .card-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures image fits without stretching */
+}
+
+
+.timer-container {
+  position: absolute;
+  top: 50%;
+  left: 150px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.start-btn:hover {
+  background-color: blue;
+}
+
+/* ใส่คลาส animate__rubberBand สำหรับปุ่ม */
+.start-btn {
+  position: absolute;           /* ทำให้ปุ่มไม่กระทบกับ layout ขององค์ประกอบอื่น */
+  top: 50%;                     /* จัดให้ปุ่มอยู่กลางในแนวตั้ง */
+  left: 40%;                    /* จัดให้ปุ่มอยู่กลางในแนวนอน */
+  padding: 20px 40px;
+  font-size: 40px;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+
+
+.start-btn.animate__rubberBand {
+  animation: rubberBand 1s ease infinite; /* ใช้แอนิเมชัน rubberBand */
+}
+
+@keyframes rubberBand {
+  0% {
+    transform: scaleX(1);
+  }
+  30% {
+    transform: scaleX(1.25) scaleY(0.75);
+  }
+  40% {
+    transform: scaleX(0.75) scaleY(1.25);
+  }
+  50% {
+    transform: scaleX(1.15) scaleY(0.85);
+  }
+  65% {
+    transform: scaleX(0.95) scaleY(1.05);
+  }
+  75% {
+    transform: scaleX(1.05) scaleY(0.95);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.lose-message{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* พื้นหลังมืดโปร่งแสง */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.restart-button {
+  background-color: #ffcc00;
+  color: #000;
+  font-size: 40px;
+  font-weight: bold;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.restart-button:hover {
+  background-color: #ffaa00;
+  transform: scale(1.1);
+}
+
+.win-message {
+  position: fixed;  /* ใช้ fixed เพื่อให้มันอยู่ในตำแหน่งคงที่ */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);  /* จัดให้อยู่ตรงกลางหน้าจอ */
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7); /* พื้นหลังโปร่งแสง */
+  color: white;
+  padding: 30px;
+  border-radius: 10px;
+  z-index: 10;  /* ให้อยู่เหนือการ์ด */
+  width: 80%;  /* ปรับความกว้างให้เหมาะสม */
+  max-width: 500px; /* กำหนดขนาดสูงสุด */
+}
+
+.win-message {
+  font-size: 24px;
+  margin-bottom: 20px; /* เว้นระยะห่างระหว่างข้อความและปุ่ม */
+}
+
+.restart-btn {
+  background-color: #ffcc00;
+  color: #000;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.restart-btn:hover {
+  background-color: #ffaa00;
+  transform: scale(1.1);
+}
+
+
+
+.game-over-message {
+  font-size: 2rem;
+  font-weight: bold;
+  color: red;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Animation for Success and Game Over messages */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate__fadeIn {
+  animation: fadeIn 1s ease-in-out;
+}
+
+.leaderboard {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+  max-width: 300px;
+  z-index: 10; /* Make sure the leaderboard appears above other content */
+}
+
+.clear-btn {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+table {
+  width: 100%;
+  border-spacing: 10px; /* Adds space between table columns */
+}
+
+th {
+  padding: 10px 20px; /* Adds space inside the header cells */
+  text-align: left; /* Align text to the left (optional) */
+  font-weight: bold;
+}
+
+

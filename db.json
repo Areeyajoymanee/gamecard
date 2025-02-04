@@ -1,0 +1,15 @@
+{
+    "leaderboard": [
+        
+    ],
+  "cardimages": [
+    { "id": 1, "src": "image/k1.jpg" },
+    { "id": 2, "src": "image/k2.jpg" },
+    { "id": 3, "src": "image/k3.jpg" },
+    { "id": 4, "src": "image/k4.jpg" },
+    { "id": 5, "src": "image/k5.jpg" },
+    { "id": 6, "src": "image/k6.jpg" },
+    { "id": 7, "src": "image/k7.jpg" },
+    { "id": 8, "src": "image/k8.jpg" }
+  ]
+}

@@ -1,0 +1,69 @@
+.difficulty-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .difficulty-container h1 {
+    margin-bottom: 20px;
+    font-size: 36px;
+    text-align: center;
+  }
+  
+  .difficulty-container button {
+    padding: 15px 30px;
+    font-size: 18px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 150px;
+    margin-bottom: 15px;  /* ระยะห่างระหว่างปุ่ม */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .easy {
+    background-color: #4CAF50;  /* สีเขียว */
+  }
+  
+  .medium {
+    background-color: #FF9800;  /* สีส้ม */
+  }
+  
+  .hard {
+    background-color: #F44336;  /* สีแดง */
+  }
+  
+  .difficulty-container button:hover {
+    opacity: 0.8;
+    transform: scale(1.1);  /* เมื่อ hover จะขยายปุ่ม */
+  }
+  
+  /* สไตล์สำหรับตารางในระดับ medium */
+  .medium-table {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);  /* สร้างคอลัมน์ 6 คอลัมน์ */
+    grid-gap: 10px;  /* ระยะห่างระหว่างเซลล์ */
+    width: 80%;  /* ความกว้างของตาราง */
+    margin: 0 auto;  /* จัดให้อยู่กลาง */
+    padding: 10px;
+  }
+  
+  .medium-table button {
+    padding: 20px;
+    font-size: 16px;
+    background-color: #FF9800;  /* สีส้ม */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    text-align: center;
+  }
+  
+  .medium-table button:hover {
+    transform: scale(1.1);  /* ขยายปุ่มเมื่อ hover */
+  }
+  
